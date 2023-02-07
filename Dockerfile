@@ -10,10 +10,7 @@ RUN npm run build
 # Production 런타임
 FROM nginxinc/nginx-unprivileged:1.23 AS runner
 WORKDIR /usr/share/nginx/html
-RUN rm -rf ./*
-COPY --from=builder /app/build .
-ENV NODE_ENV production
-
+COPY --from=builder /app/build .\
 
 EXPOSE 3000
 CMD ["nginx", "-g", "daemon off;"]
