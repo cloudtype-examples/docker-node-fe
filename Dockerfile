@@ -14,7 +14,7 @@ RUN rm -rf ./*
 COPY --from=builder /app/build .
 ENV NODE_ENV production
 
-USER node
+USER nginx
 
 EXPOSE 3000
 CMD ["nginx", "-g", "daemon off;"]
